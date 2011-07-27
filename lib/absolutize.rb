@@ -4,14 +4,15 @@ require File.expand_path(File.dirname(__FILE__) + '/absolutize')
 
 class Absolutize
 
-  def initialize(base_url, options = {})
+  def initialize(base_url, options = {})  
     @base_url = base_url
-    @options = options
-    
-    @options[:remove_anchors] = false if @options[:remove_anchors].nil? 
-    @options[:force_escaping] = true if @options[:force_escaping].nil?
-    @options[:output_debug] = false if @options[:output_debug].nil?
-    @options[:raise_exceptions] = false if @options[:raise_exceptions].nil?
+    default_options = {
+      :remove_anchors => false,
+      :force_escaping => true,
+      :output_debug => false,
+      :raise_exceptions => false
+    }
+    @options = default_options.merge(options)
     
   end
   
